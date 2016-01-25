@@ -15,6 +15,8 @@ public class Track
     private String filename;
     // Guarda el número de veces que una canción ha sido reproducida
     private int playCount;
+    // Guarda información sobre el estilo musical del track
+    private String style;
     
     /**
      * Constructor for objects of class Track.
@@ -26,6 +28,7 @@ public class Track
     {
         setDetails(artist, title, filename);
         playCount = 0;
+        style = "unknown";
     }
     
     /**
@@ -72,7 +75,7 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")" + " Veces reproducida: " + playCount;
+        return artist + ": " + title + "  (file: " + filename + ")" + " Veces reproducida: " + playCount + " Estilo: " + style;
     }
     
     /**
@@ -102,5 +105,21 @@ public class Track
     public  void playCountReset()
     {
         playCount = 0;
+    }
+    
+    /**
+     * Método que devuelve el valor de style
+     */
+    public String getStyle()
+    {
+        return style;
+    }
+    
+    /**
+     * Método para modificar el valor de style
+     */
+    public void setStyle(String style)
+    {
+        this.style = style;
     }
 }

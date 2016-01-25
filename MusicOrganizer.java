@@ -185,4 +185,12 @@ public class MusicOrganizer
             }
         }
     }
+    
+    /**
+     * Método para modificar el atributo style en una canción
+     */
+    public void changeStyle(String style,int index)
+    {
+        tracks.get(index).setStyle(style);
+    }
 }
