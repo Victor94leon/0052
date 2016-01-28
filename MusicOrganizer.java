@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,8 @@ public class MusicOrganizer
     private TrackReader reader;
     // Informa si hay un track reproduciendose en ese momento (true == hay track reproduciendose, false == no hay reproducción en curso)
     private boolean isPlayingNow;
+    // Objeto Iterator que recorre todas las canciones del organizador
+    private Iterator<Track> iterador;
 
     /**
      * Create a MusicOrganizer
@@ -30,6 +33,7 @@ public class MusicOrganizer
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
         isPlayingNow = false;
+        iterador = tracks.iterator();
     }
 
     /**
@@ -220,6 +224,17 @@ public class MusicOrganizer
         }
         else {
             System.out.println("No hay ninguna reproducción en curso");
+        }
+    }
+    
+    /**
+     * Método que muestra los detalles de todos los tracks almacenados 
+     * en un organizador usando iterator
+     */
+    public void listAllTrackWithIterator()
+    {
+        while (iterador.hasNext()) {
+            System.out.println(iterador.next().getDetails());
         }
     }
 }
