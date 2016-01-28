@@ -228,7 +228,7 @@ public class MusicOrganizer
             System.out.println("No hay ninguna reproducción en curso");
         }
     }
-    
+
     /**
      * Método que muestra los detalles de todos los tracks almacenados 
      * en un organizador usando iterator
@@ -239,7 +239,7 @@ public class MusicOrganizer
             System.out.println(iterador.next().getDetails());
         }     
     }
-    
+
     /**
      * Método que permite eliminar del organizador los tracks que 
      * contengan un determinado artista
@@ -252,7 +252,7 @@ public class MusicOrganizer
             }
         }
     }
-    
+
     /**
      * Método que permite eliminar del organizador los tracks que
      * contengan un determinado titulo
@@ -265,7 +265,7 @@ public class MusicOrganizer
             } 
         }
     }
-    
+
     /**
      * Método que reproduce una canción al azar de la lista
      */
@@ -275,10 +275,10 @@ public class MusicOrganizer
         int numeroRandom = random.nextInt(tracks.size());
         playTrack(numeroRandom);
     }
-     
+
     /**
      * Método que permite reproducir los primeros segundos de 
-     * cada canción ne un orden aleatorio
+     * cada canción en un orden aleatorio
      */
     public void playShuffle()
     {
@@ -287,6 +287,26 @@ public class MusicOrganizer
             System.out.println("Now playing: " + trackEnLista.getArtist() + " - " + trackEnLista.getTitle());
             player.playSample(trackEnLista.getFilename());
             trackEnLista.playCountIncrement();
+        }
+    }
+
+    /**
+     * Método que permite reproducir los primeros segundos de
+     * cada canción en un orden aleatorio (con una copia del ArrayList del
+     * que se van eliminando los elementos escuchados)
+     */
+    public void playShuffle2()
+    {
+        ArrayList<Track> copia = new ArrayList<>();
+        copia = (ArrayList)tracks.clone();
+        Random random = new Random();
+
+        while (copia.size()!=0 ) {
+            int trackRandom = random.nextInt(copia.size());
+            System.out.println("Now playing: " + copia.get(trackRandom).getArtist() + " - " + copia.get(trackRandom).getTitle());
+            player.playSample(copia.get(trackRandom).getFilename());
+            copia.get(trackRandom).playCountIncrement();
+            copia.remove(trackRandom);
         }
     }
 }
