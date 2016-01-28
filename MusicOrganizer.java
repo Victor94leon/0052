@@ -24,12 +24,12 @@ public class MusicOrganizer
     /**
      * Create a MusicOrganizer
      */
-    public MusicOrganizer()
+    public MusicOrganizer(String carpetaContenedora)
     {
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
-        readLibrary("audio");
+        readLibrary(carpetaContenedora);
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
         isPlayingNow = false;
