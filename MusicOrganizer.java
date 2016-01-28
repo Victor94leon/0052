@@ -1,6 +1,7 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
 
 /**
  * A class to hold details of audio tracks.
@@ -273,5 +274,19 @@ public class MusicOrganizer
         Random random = new Random();
         int numeroRandom = random.nextInt(tracks.size());
         playTrack(numeroRandom);
+    }
+     
+    /**
+     * Método que permite reproducir los primeros segundos de 
+     * cada canción ne un orden aleatorio
+     */
+    public void playShuffle()
+    {
+        Collections.shuffle(tracks);
+        for (Track trackEnLista : tracks) {
+            System.out.println("Now playing: " + trackEnLista.getArtist() + " - " + trackEnLista.getTitle());
+            player.playSample(trackEnLista.getFilename());
+            trackEnLista.playCountIncrement();
+        }
     }
 }
